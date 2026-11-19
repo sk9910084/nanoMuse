@@ -77,3 +77,6 @@ uv.lock
 
 # nanoMuse Cloud relay runtime data
 cloud/data/
+
+# Fork: the shared debug key is public by design (standard debug passwords).
+!android/nanomuse-fork.keystore

@@ -82,6 +82,14 @@ jobs:
           export PATH="$GOPATH/bin:$PATH" # gomobile / gobind land there
           bash scripts/android/build-natives.sh
 
+      # Fork: one shared debug key for every build, so each fork APK installs over
+      # the last (the runner's auto-generated debug key would differ every run).
+      # The keystore is committed with the standard debug passwords (android).
+      - name: Fork debug keystore
+        run: |
+          mkdir -p ~/.android
+          cp android/nanomuse-fork.keystore ~/.android/debug.keystore
+
       - name: assembleDebug
         working-directory: android/src/android
         run: |
